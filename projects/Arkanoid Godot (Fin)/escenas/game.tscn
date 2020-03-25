@@ -1,0 +1,96 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://escenas/ball.tscn" type="PackedScene" id=1]
+[ext_resource path="res://escenas/bloq.tscn" type="PackedScene" id=2]
+[ext_resource path="res://escenas/bar.tscn" type="PackedScene" id=3]
+[ext_resource path="res://code/gameManager.gd" type="Script" id=4]
+[ext_resource path="res://escenas/bloq-point-yellow.tscn" type="PackedScene" id=5]
+[ext_resource path="res://escenas/bloq-point-red.tscn" type="PackedScene" id=6]
+
+[node name="Game" type="Node2D"]
+script = ExtResource( 4 )
+
+[node name="bloque-point" parent="." instance=ExtResource( 5 )]
+position = Vector2( 219.488, 68.59 )
+
+[node name="bloque-point3" parent="." instance=ExtResource( 5 )]
+position = Vector2( 219.488, 68.59 )
+
+[node name="bloque-point4" parent="." instance=ExtResource( 5 )]
+position = Vector2( 220.345, 102.885 )
+
+[node name="bloque-point5" parent="." instance=ExtResource( 5 )]
+position = Vector2( 284.649, 68.59 )
+
+[node name="Bar" parent="." groups=[
+"bar",
+] instance=ExtResource( 3 )]
+position = Vector2( 227.053, 296.964 )
+
+[node name="Lado" type="Node2D" parent="."]
+position = Vector2( 90, 32 )
+
+[node name="bloq13" parent="Lado" instance=ExtResource( 2 )]
+
+[node name="bloq14" parent="Lado" instance=ExtResource( 2 )]
+position = Vector2( 64, 0 )
+
+[node name="bloq15" parent="Lado" instance=ExtResource( 2 )]
+position = Vector2( 128, 0 )
+
+[node name="bloq16" parent="Lado" instance=ExtResource( 2 )]
+position = Vector2( 192, 0 )
+
+[node name="bloq17" parent="Lado" instance=ExtResource( 2 )]
+position = Vector2( 256, 0 )
+
+[node name="Lado2" type="Node2D" parent="."]
+position = Vector2( 48, 48 )
+rotation = 1.5708
+
+[node name="bloq13" parent="Lado2" instance=ExtResource( 2 )]
+
+[node name="bloq14" parent="Lado2" instance=ExtResource( 2 )]
+position = Vector2( 64, 0 )
+
+[node name="bloq15" parent="Lado2" instance=ExtResource( 2 )]
+position = Vector2( 128, 0 )
+
+[node name="bloq16" parent="Lado2" instance=ExtResource( 2 )]
+position = Vector2( 192, 0 )
+
+[node name="bloq17" parent="Lado2" instance=ExtResource( 2 )]
+position = Vector2( 256, 0 )
+
+[node name="Lado3" type="Node2D" parent="."]
+position = Vector2( 390, 48 )
+rotation = 1.5708
+
+[node name="bloq13" parent="Lado3" instance=ExtResource( 2 )]
+
+[node name="bloq14" parent="Lado3" instance=ExtResource( 2 )]
+position = Vector2( 64, 0 )
+
+[node name="bloq15" parent="Lado3" instance=ExtResource( 2 )]
+position = Vector2( 128, 0 )
+
+[node name="bloq16" parent="Lado3" instance=ExtResource( 2 )]
+position = Vector2( 192, 0 )
+
+[node name="bloq17" parent="Lado3" instance=ExtResource( 2 )]
+position = Vector2( 256, 0 )
+
+[node name="bloque-point2" parent="." instance=ExtResource( 6 )]
+position = Vector2( 153.607, 68.3033 )
+
+[node name="bloque-point6" parent="." instance=ExtResource( 6 )]
+position = Vector2( 285.329, 102.337 )
+
+[node name="Ball" parent="." instance=ExtResource( 1 )]
+position = Vector2( 107.891, 134.638 )
+mass = 1.0
+gravity_scale = 2.0
+contacts_reported = 1
+can_sleep = false
+linear_velocity = Vector2( 200, 200 )
+[connection signal="body_entered" from="Ball" to="." method="_on_Ball_body_entered"]
