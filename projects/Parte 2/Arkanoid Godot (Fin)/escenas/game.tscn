@@ -1,0 +1,125 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://escenas/pelota.tscn" type="PackedScene" id=1]
+[ext_resource path="res://escenas/bloque.tscn" type="PackedScene" id=2]
+[ext_resource path="res://escenas/barra.tscn" type="PackedScene" id=3]
+[ext_resource path="res://code/gameManager.gd" type="Script" id=4]
+[ext_resource path="res://escenas/bloque-amarillo.tscn" type="PackedScene" id=5]
+[ext_resource path="res://escenas/bloque-rojo.tscn" type="PackedScene" id=6]
+[ext_resource path="res://sound/impact_bar.ogg" type="AudioStream" id=7]
+[ext_resource path="res://sound/impact_bloq.ogg" type="AudioStream" id=8]
+[ext_resource path="res://interfaces/GUI.tscn" type="PackedScene" id=9]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 189, 18.5789 )
+
+[node name="Game" type="Node2D"]
+script = ExtResource( 4 )
+
+[node name="Mapa" type="Node2D" parent="."]
+
+[node name="bloque-point3" parent="Mapa" instance=ExtResource( 5 )]
+position = Vector2( 128, 32 )
+
+[node name="bloque-point4" parent="Mapa" instance=ExtResource( 5 )]
+position = Vector2( 256, 32 )
+
+[node name="bloque-point5" parent="Mapa" instance=ExtResource( 5 )]
+position = Vector2( 192, 32 )
+
+[node name="bloque-point6" parent="Mapa" instance=ExtResource( 5 )]
+position = Vector2( 128, 64 )
+
+[node name="bloque-point7" parent="Mapa" instance=ExtResource( 5 )]
+position = Vector2( 192, 96 )
+
+[node name="bloque-point2" parent="Mapa" instance=ExtResource( 6 )]
+position = Vector2( 64, 32 )
+
+[node name="bloque-point8" parent="Mapa" instance=ExtResource( 6 )]
+position = Vector2( 192, 64 )
+
+[node name="bloque-point9" parent="Mapa" instance=ExtResource( 6 )]
+position = Vector2( 128, 96 )
+
+[node name="Lado" type="Node2D" parent="."]
+position = Vector2( 32, 0 )
+
+[node name="bloq13" parent="Lado" instance=ExtResource( 2 )]
+
+[node name="bloq14" parent="Lado" instance=ExtResource( 2 )]
+position = Vector2( 64, 0 )
+
+[node name="bloq15" parent="Lado" instance=ExtResource( 2 )]
+position = Vector2( 128, 0 )
+
+[node name="bloq16" parent="Lado" instance=ExtResource( 2 )]
+position = Vector2( 192, 0 )
+
+[node name="bloq17" parent="Lado" instance=ExtResource( 2 )]
+position = Vector2( 256, 0 )
+
+[node name="Lado2" type="Node2D" parent="."]
+position = Vector2( 64, 32 )
+rotation = 1.5708
+
+[node name="bloq13" parent="Lado2" instance=ExtResource( 2 )]
+
+[node name="bloq14" parent="Lado2" instance=ExtResource( 2 )]
+position = Vector2( 64, 0 )
+
+[node name="bloq15" parent="Lado2" instance=ExtResource( 2 )]
+position = Vector2( 128, 0 )
+
+[node name="bloq16" parent="Lado2" instance=ExtResource( 2 )]
+position = Vector2( 192, 0 )
+
+[node name="bloq17" parent="Lado2" instance=ExtResource( 2 )]
+position = Vector2( 256, 0 )
+
+[node name="Lado3" type="Node2D" parent="."]
+position = Vector2( 352, 32 )
+rotation = 1.5708
+
+[node name="bloq13" parent="Lado3" instance=ExtResource( 2 )]
+
+[node name="bloq14" parent="Lado3" instance=ExtResource( 2 )]
+position = Vector2( 64, 0 )
+
+[node name="bloq15" parent="Lado3" instance=ExtResource( 2 )]
+position = Vector2( 128, 0 )
+
+[node name="bloq16" parent="Lado3" instance=ExtResource( 2 )]
+position = Vector2( 192, 0 )
+
+[node name="bloq17" parent="Lado3" instance=ExtResource( 2 )]
+position = Vector2( 256, 0 )
+
+[node name="Ball" parent="." instance=ExtResource( 1 )]
+position = Vector2( 107.891, 134.638 )
+mass = 1.0
+gravity_scale = 2.0
+can_sleep = false
+linear_velocity = Vector2( 200, 200 )
+
+[node name="Bar" parent="." groups=[
+"bar",
+] instance=ExtResource( 3 )]
+position = Vector2( 227.053, 296.964 )
+
+[node name="Audio_Barra" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 7 )
+
+[node name="Audio_Bloque" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 8 )
+
+[node name="Area_Derrota" type="Area2D" parent="."]
+position = Vector2( 230, 370 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area_Derrota"]
+position = Vector2( -38, 14 )
+shape = SubResource( 1 )
+
+[node name="GUI" parent="." instance=ExtResource( 9 )]
+[connection signal="body_entered" from="Ball" to="." method="_on_Ball_body_entered"]
+[connection signal="body_entered" from="Area_Derrota" to="." method="_on_Area_Derrota_body_entered"]
