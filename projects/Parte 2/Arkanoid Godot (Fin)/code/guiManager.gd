@@ -13,5 +13,3 @@ func ver_mensaje_lose():
 
 func _on_BReintentar_pressed():
 	get_tree().reload_current_scene()
-
-

@@ -15,6 +15,7 @@ func _on_Ball_body_entered(body):
 		# Condición de victoria: Sin bloques para destruir
 		if get_tree().get_nodes_in_group("bar-deleted").size() == 1:
 			$GUI.ver_mensaje_win()
+			#get_tree().paused = true
 			get_tree().change_scene("res://escenas/level2.tscn")
 		# Sumar puntos
 		mis_puntos += sumar_puntos
